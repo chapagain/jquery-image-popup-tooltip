@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Image Preview With Tooltip Effect</title>
+<script type="text/javascript" src="js/jquery-1.4.min.js"></script>
+<script type="text/javascript" language="javascript">
+	$(document).ready(function() {		
+		$("#thumbnail img").hover(function(e){
+			$("#large").css("top",(e.pageY+5)+"px")
+							 .css("left",(e.pageX+5)+"px")					
+							 .html("<img src="+ $(this).attr("alt") +" alt='Large Image' /><br/>"+$(this).attr("rel"))
+							 .fadeIn("slow");
+		}, function(){
+			$("#large").fadeOut("fast");
+		});		
+		
+	});
+</script>
+<style>
+img {
+	border: none;
+}
+#thumbnail img {
+	cursor: pointer;	
+}
+#large {
+	display: none;
+	position: absolute;	
+	color: #FFFFFF;
+	background: #333333;	
+	padding: 5px;
+}
+</style>
+</head>
+<body>
+<div align="center">      
+   <div id="thumbnail">
+		<h3>Hover over the image</h3>
+	    <img src="images/thumbnails/hills-thumb.jpg" alt="images/hills.jpg" rel="Hills Image" />
+		<img src="images/thumbnails/lilies-thumb.jpg" alt="images/lilies.jpg" rel="Lilies Image" />
+		<img src="images/thumbnails/sunset-thumb.jpg" alt="images/sunset.jpg" rel="Sunset Image" />
+		<img src="images/thumbnails/winter-thumb.jpg" alt="images/winter.jpg" rel="Winter Image" />
+		<p id="large"></p>
+   </div>   
+</div>
+</body>
+</html>
